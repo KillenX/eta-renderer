@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+	<script>
+		function renderTemplate() {
+			Eta.config.varName="props"
+			const propsText = window.document.getElementById("props").value;
+			const props = JSON.parse(propsText);
+
+			const template = window.document.getElementById("template").value;
+			const resultElement = window.document.getElementById("resultHtml");
+
+			const result = Eta.render(template, props);
+			resultElement.innerHTML = result;
+		}
+	</script>
+	<script defer src="https://unpkg.com/eta"></script>
+</head>
+
+<body>
+	<label>Put your source data here, available as props</label>
+	<input id="props" />
+
+	<label>Put your template here</label>
+	<input id="template" />
+
+	<button onclick="renderTemplate()">Click me to render</button>
+	<div id="resultHtml"></div>
+</body>
